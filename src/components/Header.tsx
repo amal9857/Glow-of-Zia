@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Menu, X, LogOut, User as UserIcon } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, LogOut, Search } from 'lucide-react';
 import styles from './Header.module.css';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -14,7 +14,37 @@ export default function Header() {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [query, setQuery] = useState('');
+    const [results, setResults] = useState<any[]>([]);
+    const [searching, setSearching] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
     const isAdmin = (session?.user as any)?.role === "ADMIN";
+
+    useEffect(() => {
+        if (searchOpen) setTimeout(() => inputRef.current?.focus(), 100);
+        else { setQuery(''); setResults([]); }
+    }, [searchOpen]);
+
+    useEffect(() => {
+        if (!query.trim()) { setResults([]); return; }
+        const timer = setTimeout(async () => {
+            setSearching(true);
+            try {
+                const res = await fetch('/api/products');
+                const data = await res.json();
+                const filtered = (data.products || []).filter((p: any) =>
+                    p.name.toLowerCase().includes(query.toLowerCase()) ||
+                    p.collection?.toLowerCase().includes(query.toLowerCase()) ||
+                    p.category?.toLowerCase().includes(query.toLowerCase()) ||
+                    p.description?.toLowerCase().includes(query.toLowerCase())
+                );
+                setResults(filtered.slice(0, 8));
+            } catch { setResults([]); }
+            setSearching(false);
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [query]);
 
     return (
         <>
@@ -28,9 +58,45 @@ export default function Header() {
                         <img src="/logo.jpg" alt="Glow of Zia Logo" className={styles.logoImage} />
                     </Link>
 
-                    <div style={{ width: '40px' }} />
+                    <button onClick={() => setSearchOpen(true)} className={styles.menuButton} aria-label="Search">
+                        <Search size={24} />
+                    </button>
                 </div>
             </header>
+
+            {/* Search Overlay */}
+            {searchOpen && (
+                <div className={styles.searchOverlay}>
+                    <div className={styles.searchBox}>
+                        <div className={styles.searchInputRow}>
+                            <Search size={20} className={styles.searchIcon} />
+                            <input
+                                ref={inputRef}
+                                type="text"
+                                value={query}
+                                onChange={e => setQuery(e.target.value)}
+                                placeholder="Search products, collections..."
+                                className={styles.searchInput}
+                            />
+                            <button onClick={() => setSearchOpen(false)} className={styles.closeButton}><X size={22} /></button>
+                        </div>
+                        <div className={styles.searchResults}>
+                            {searching && <p className={styles.searchHint}>Searching...</p>}
+                            {!searching && query && results.length === 0 && <p className={styles.searchHint}>No results found for "{query}"</p>}
+                            {!searching && !query && <p className={styles.searchHint}>Start typing to search products...</p>}
+                            {results.map(p => (
+                                <Link key={p.id} href={`/product/${p.id}`} className={styles.searchResultItem} onClick={() => setSearchOpen(false)}>
+                                    <img src={p.image} alt={p.name} className={styles.searchResultImg} />
+                                    <div>
+                                        <p className={styles.searchResultName}>{p.name}</p>
+                                        <p className={styles.searchResultMeta}>{p.collection} · ₹{p.price.toLocaleString('en-IN')}</p>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Sidebar Overlay */}
             <div
