@@ -4,7 +4,12 @@ import { prisma } from '../lib/prisma';
 import Link from 'next/link';
 
 export default async function Categories() {
-    const categories = await prisma.category.findMany({ orderBy: { createdAt: 'asc' } });
+    let categories: any[] = [];
+    try {
+        categories = await prisma.category.findMany({ orderBy: { createdAt: 'asc' } });
+    } catch (err) {
+        console.error('Categories fetch error:', err);
+    }
 
     return (
         <section className="section-container" id="categories">

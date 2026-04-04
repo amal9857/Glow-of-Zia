@@ -4,7 +4,12 @@ import { prisma } from '../lib/prisma';
 import Link from 'next/link';
 
 export default async function Collections() {
-    const collections = await prisma.collection.findMany({ orderBy: { createdAt: 'asc' } });
+    let collections: any[] = [];
+    try {
+        collections = await prisma.collection.findMany({ orderBy: { createdAt: 'asc' } });
+    } catch (err) {
+        console.error('Collections fetch error:', err);
+    }
 
     return (
         <section className="section-container" id="collections">
