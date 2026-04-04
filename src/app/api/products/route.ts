@@ -1,14 +1,17 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../lib/prisma';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(request: Request) {
     try {
         const formData = await request.formData();
 
-        // Parse fields
         const name = formData.get('name')?.toString() || '';
         const productNumber = formData.get('productNumber')?.toString() || '';
         const category = formData.get('category')?.toString() || '';
@@ -29,15 +32,17 @@ export async function POST(request: Request) {
 
         const price = parseFloat(priceStr);
 
-        const uploadDir = join(process.cwd(), 'public/uploads');
-        if (!existsSync(uploadDir)) await mkdir(uploadDir, { recursive: true });
-
         const imageUrls: string[] = [];
         for (const file of files.slice(0, 5)) {
             if (!file || file.size === 0) continue;
-            const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}-${file.name.replace(/\s+/g, '-')}`;
-            await writeFile(join(uploadDir, filename), Buffer.from(await file.arrayBuffer()));
-            imageUrls.push(`/uploads/${filename}`);
+            const buffer = Buffer.from(await file.arrayBuffer());
+            const url = await new Promise<string>((resolve, reject) => {
+                cloudinary.uploader.upload_stream(
+                    { folder: 'glow-of-zia' },
+                    (error, result) => error ? reject(error) : resolve(result!.secure_url)
+                ).end(buffer);
+            });
+            imageUrls.push(url);
         }
 
         const product = await prisma.product.create({
