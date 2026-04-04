@@ -1,0 +1,424 @@
+.page {
+    min-height: 100vh;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    transition: color 0.3s;
+}
+
+.back:hover {
+    color: var(--gold-primary);
+}
+
+.title {
+    font-size: 2.2rem;
+    color: var(--gold-primary);
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+}
+
+.formCard,
+.summaryCard {
+    background: #0d0d0d;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.cardTitle {
+    font-size: 1.1rem;
+    color: var(--gold-primary);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.field label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+}
+
+.optional {
+    text-transform: none;
+    font-size: 0.75rem;
+    color: #555;
+    letter-spacing: 0;
+}
+
+.sectionLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold-primary);
+    margin: 1.2rem 0 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.field input,
+.field textarea {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #f1f1f1;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: var(--gold-primary);
+}
+
+.inputError {
+    border-color: #e74c3c !important;
+}
+
+.inputError:focus {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.15);
+}
+
+.errorMsg {
+    font-size: 0.75rem;
+    color: #e74c3c;
+    margin-top: 0.2rem;
+}
+
+.productRow {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.productImg {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #222;
+    flex-shrink: 0;
+}
+
+.productName {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f1f1f1;
+    margin-bottom: 0.3rem;
+}
+
+.productMeta {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: capitalize;
+    margin-bottom: 0.4rem;
+}
+
+.productPrice {
+    font-size: 1rem;
+    color: var(--gold-primary);
+    font-weight: 600;
+}
+
+.quantityRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.quantityRow label {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.quantityControl {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.quantityControl button {
+    background: #111;
+    border: none;
+    color: var(--gold-primary);
+    font-size: 1.2rem;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.quantityControl button:hover {
+    background: #1a1a1a;
+}
+
+.quantityControl span {
+    width: 44px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f1f1f1;
+    background: #0d0d0d;
+    height: 38px;
+    line-height: 38px;
+    border-left: 1px solid #2a2a2a;
+    border-right: 1px solid #2a2a2a;
+}
+
+.divider {
+    height: 1px;
+    background: #1e1e1e;
+    margin: 1rem 0;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.free {
+    color: #4caf50;
+    font-weight: 600;
+}
+
+.grandTotal {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold-primary);
+    margin-bottom: 1.5rem;
+}
+
+.buyBtn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buyBtn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #2be673, #1aad6e);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+    transform: translateY(-2px);
+}
+
+.buyBtn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.hint {
+    text-align: center;
+    font-size: 0.78rem;
+    color: #555;
+    margin-top: 0.75rem;
+}
+
+.loading {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #888;
+    gap: 0.5rem;
+}
+
+.deliveryNote {
+    font-size: 0.78rem;
+    color: #888;
+    text-align: center;
+    margin-top: 0.8rem;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 0.8rem;
+    }
+
+    .title {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .formCard,
+    .summaryCard {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .cardTitle {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .row {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+    }
+
+    .field {
+        margin-bottom: 0.9rem;
+    }
+
+    .field label {
+        font-size: 0.72rem;
+    }
+
+    .field input,
+    .field textarea {
+        font-size: 0.88rem;
+        padding: 0.6rem 0.75rem;
+    }
+
+    .productRow {
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .productImg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .productName {
+        font-size: 0.85rem;
+    }
+
+    .productMeta {
+        font-size: 0.72rem;
+    }
+
+    .productPrice {
+        font-size: 0.9rem;
+    }
+
+    .quantityRow {
+        margin-bottom: 1rem;
+    }
+
+    .quantityRow label {
+        font-size: 0.78rem;
+    }
+
+    .quantityControl button {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
+
+    .quantityControl span {
+        width: 38px;
+        height: 34px;
+        line-height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .totalRow {
+        font-size: 0.82rem;
+    }
+
+    .grandTotal {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .buyBtn {
+        font-size: 0.85rem;
+        padding: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .deliveryNote {
+        font-size: 0.72rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0.8rem 0.6rem;
+    }
+}

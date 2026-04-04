@@ -1,0 +1,197 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 50;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menuButton,
+.cartButton {
+    background: transparent;
+    border: none;
+    color: var(--gold-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.menuButton:hover,
+.cartButton:hover {
+    transform: scale(1.1);
+    color: var(--gold-light);
+}
+
+.logoContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoImage {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+    z-index: 100;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebarOpen {
+    left: 0;
+}
+
+.sidebarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.sidebarTitle {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--gold-primary);
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+    color: var(--gold-primary);
+}
+
+.sidebarNav {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+}
+
+.sidebarNav a {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.sidebarNav a:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-left: 3px solid var(--gold-primary);
+    color: var(--gold-primary);
+}
+
+.sidebarDivider {
+    height: 1px;
+    background: rgba(212, 175, 55, 0.1);
+    margin: 1rem 1.5rem;
+}
+
+.adminLink {
+    color: var(--gold-primary) !important;
+    font-weight: 700 !important;
+    background: rgba(212, 175, 55, 0.05);
+    margin-bottom: 0.5rem;
+}
+
+.loginLink {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+    color: #000 !important;
+    margin: 1rem 1.5rem !important;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 1.5rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 1.5rem;
+    color: #ff4d4d;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+    background: rgba(255, 0, 0, 0.05);
+    color: #ff3333;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 90;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.overlayOpen {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 260px;
+    }
+}
