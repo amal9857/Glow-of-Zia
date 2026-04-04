@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../lib/prisma';
-import { v2 as cloudinary } from 'cloudinary';
+import { uploadImage } from '../../../lib/cloudinary';
 
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+export async function GET() {
+    try {
+        const products = await prisma.product.findMany({ orderBy: { createdAt: 'desc' } });
+        return NextResponse.json({ products });
+    } catch (error: any) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+}
 
 export async function POST(request: Request) {
     try {
@@ -31,18 +34,10 @@ export async function POST(request: Request) {
         }
 
         const price = parseFloat(priceStr);
-
         const imageUrls: string[] = [];
         for (const file of files.slice(0, 5)) {
             if (!file || file.size === 0) continue;
-            const buffer = Buffer.from(await file.arrayBuffer());
-            const url = await new Promise<string>((resolve, reject) => {
-                cloudinary.uploader.upload_stream(
-                    { folder: 'glow-of-zia' },
-                    (error, result) => error ? reject(error) : resolve(result!.secure_url)
-                ).end(buffer);
-            });
-            imageUrls.push(url);
+            imageUrls.push(await uploadImage(file));
         }
 
         const product = await prisma.product.create({
@@ -56,19 +51,6 @@ export async function POST(request: Request) {
         });
 
         return NextResponse.json({ success: true, product });
-
-    } catch (error: any) {
-        console.error('Error posting product:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-}
-
-export async function GET() {
-    try {
-        const products = await prisma.product.findMany({
-            orderBy: { createdAt: 'desc' }
-        });
-        return NextResponse.json({ products });
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
