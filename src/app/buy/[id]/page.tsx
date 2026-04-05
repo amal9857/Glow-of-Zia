@@ -68,11 +68,13 @@ export default function BuyPage() {
     };
 
     const handleBuy = () => {
-        // Touch all fields to show all errors
         const allTouched: Partial<Record<FormKey, boolean>> = {};
         (Object.keys(form) as FormKey[]).forEach(k => { allTouched[k] = true; });
         setTouched(allTouched);
-        if (!isValid || !product) return;
+        if (!isValid || !product) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
 
         const msg =
             `*New Order — Glow of Zia*\n` +
@@ -88,6 +90,7 @@ export default function BuyPage() {
             (form.landmark ? `Landmark: ${form.landmark}\n` : '') +
             `--------------------------------\n` +
             `*Order Details*\n` +
+            `Product No: ${product.id}\n` +
             `Product: ${product.name}\n` +
             `Collection: ${product.collection}\n` +
             `Category: ${product.category}\n` +
@@ -217,11 +220,6 @@ export default function BuyPage() {
                             <span>Subtotal ({quantity} item{quantity > 1 ? 's' : ''})</span>
                             <span>₹{(product.price * quantity).toLocaleString('en-IN')}</span>
                         </div>
-                        <div className={styles.totalRow}>
-                            <span>Shipping</span>
-                            <span className={styles.free}>Free</span>
-                        </div>
-
                         <div className={styles.divider} />
 
                         <div className={styles.grandTotal}>
