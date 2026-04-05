@@ -9,10 +9,14 @@ import { ChevronLeft } from 'lucide-react';
 interface Product {
     id: string;
     name: string;
+    productNumber: string;
     price: number;
     image: string;
     collection: string;
     category: string;
+    material: string;
+    weight: string;
+    size: string;
 }
 
 type FormKey = 'name' | 'email' | 'phone' | 'address' | 'city' | 'state' | 'country' | 'pincode' | 'landmark';
@@ -90,10 +94,13 @@ export default function BuyPage() {
             (form.landmark ? `Landmark: ${form.landmark}\n` : '') +
             `--------------------------------\n` +
             `*Order Details*\n` +
-            `Product No: ${product.id}\n` +
-            `Product: ${product.name}\n` +
             `Collection: ${product.collection}\n` +
             `Category: ${product.category}\n` +
+            `Product No: ${product.productNumber}\n` +
+            `Product: ${product.name}\n` +
+            (product.material ? `Material: ${product.material}\n` : '') +
+            (product.weight ? `Weight: ${product.weight}\n` : '') +
+            (product.size ? `Size / Fit: ${product.size}\n` : '') +
             `Quantity: ${quantity}\n` +
             `Price per item: Rs.${product.price.toLocaleString('en-IN')}\n` +
             `Total Amount: Rs.${total.toLocaleString('en-IN')}\n` +
