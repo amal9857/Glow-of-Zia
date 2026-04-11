@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-    title: "Glow of Zia | Handmade Jewelry",
+    title: "Glow of Joe | Handmade Jewelry",
     description: "High quality handmade jewelry for men, women, and kids. All India delivery available. Support on WhatsApp.",
 };
 
