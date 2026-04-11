@@ -39,7 +39,6 @@ function NewOrders() {
                         <span style={{ color: 'var(--gold-primary)', fontWeight: 700, fontSize: '0.85rem' }}>
                             {new Date(o.createdAt).toLocaleString('en-IN')}
                         </span>
-                        <button onClick={() => handleDelete(o.id)} className={styles.deleteBtn}>Delete</button>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.4rem 1.5rem', fontSize: '0.88rem' }}>
                         <div><span style={{ color: '#888' }}>Name: </span><span style={{ color: '#fff' }}>{o.customerName}</span></div>
