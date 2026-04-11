@@ -55,7 +55,7 @@ export default function Header() {
                     </button>
 
                     <Link href="/" className={styles.logoContainer}>
-                        <img src="/logo.png" alt="Glow of Zia Logo" className={styles.logoImage} />
+                        <img src="/logo.png" alt="Glow of Joe Logo" className={styles.logoImage} />
                     </Link>
 
                     <button onClick={() => setSearchOpen(true)} className={styles.menuButton} aria-label="Search">
@@ -107,7 +107,7 @@ export default function Header() {
             {/* Sidebar */}
             <div className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarOpen : ''}`}>
                 <div className={styles.sidebarHeader}>
-                    <h2 className={styles.sidebarTitle}>Glow of Zia</h2>
+                    <h2 className={styles.sidebarTitle}>Glow of Joe</h2>
                     <button onClick={toggleSidebar} className={styles.closeButton} aria-label="Close menu">
                         <X size={28} />
                     </button>

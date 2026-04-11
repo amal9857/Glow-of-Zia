@@ -6,7 +6,7 @@ export default function Hero() {
         <section className={styles.hero} id="home">
             <div className={styles.heroContent}>
                 <div className={styles.logoBadge}>
-                    <img src="/logo.png" alt="Glow of Zia Logo" className={styles.logoImage} />
+                    <img src="/logo.png" alt="Glow of Joe Logo" className={styles.logoImage} />
                 </div>
                 <div className={styles.ctaWrapper}>
                     <a href="#collections" className="btn-primary">Explore Collections</a>

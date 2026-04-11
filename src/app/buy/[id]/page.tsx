@@ -81,7 +81,7 @@ export default function BuyPage() {
         }
 
         const msg =
-            `*New Order — Glow of Zia*\n` +
+            `*New Order — Glow of Joe*\n` +
             `--------------------------------\n` +
             `*Customer Details*\n` +
             `Name: ${form.name}\n` +

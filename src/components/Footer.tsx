@@ -44,7 +44,7 @@ export default function Footer() {
         <footer className={styles.footer} id="contact">
             <div className={styles.footerContent}>
                 <div className={styles.brand}>
-                    <img src="/logo.png" alt="Glow of Zia Logo" className={styles.logoImage} />
+                    <img src="/logo.png" alt="Glow of Joe Logo" className={styles.logoImage} />
                 </div>
 
                 <div className={styles.socialContainer}>
@@ -64,7 +64,7 @@ export default function Footer() {
 
                 <div className={styles.copyright}>
                     <p onClick={handleCopyrightClick} style={{ cursor: 'default', userSelect: 'none' }}>
-                        &copy; {new Date().getFullYear()} Glow of Zia. All Rights Reserved.
+                        &copy; {new Date().getFullYear()} Glow of Joe. All Rights Reserved.
                     </p>
                     <p style={{ marginTop: '0.5rem', fontSize: '0.75rem' }}>Handmade Jewelry across India.</p>
                 </div>
