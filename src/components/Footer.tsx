@@ -50,15 +50,18 @@ export default function Footer() {
                 <div className={styles.socialContainer}>
                     <h3 className={styles.socialTitle}>Find Us On</h3>
                     <div className={styles.socialLinks}>
-                        <a href="#" className={styles.socialLink} aria-label="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=61575429970949" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
                             <FacebookIcon />
                         </a>
-                        <a href="#" className={styles.socialLink} aria-label="Instagram">
+                        <a href="https://www.instagram.com/glow_of_joe?igsh=MTV2dHdheGo2Y2xzdQ==" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
                             <InstagramIcon />
                         </a>
-                        <a href="#" className={styles.socialLink} aria-label="WhatsApp">
-                            <WhatsAppIcon />
-                        </a>
+                        <div className={styles.whatsappWrapper}>
+                            <a href="https://wa.me/919074185755" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="WhatsApp">
+                                <WhatsAppIcon />
+                            </a>
+                            <span className={styles.whatsappLabel}>Customer Support</span>
+                        </div>
                     </div>
                 </div>
 
