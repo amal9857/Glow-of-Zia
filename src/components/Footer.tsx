@@ -44,7 +44,7 @@ export default function Footer() {
         <footer className={styles.footer} id="contact">
             <div className={styles.footerContent}>
                 <div className={styles.brand}>
-                    <img src="/logo.jpg" alt="Glow of Zia Logo" className={styles.logoImage} />
+                    <img src="/logo.png" alt="Glow of Zia Logo" className={styles.logoImage} />
                 </div>
 
                 <div className={styles.socialContainer}>
