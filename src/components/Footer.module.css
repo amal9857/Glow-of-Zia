@@ -46,20 +46,6 @@
     align-items: flex-start;
 }
 
-.whatsappWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.whatsappLabel {
-    font-size: 0.7rem;
-    color: var(--gold-primary);
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
 .socialLink {
     display: flex;
     align-items: center;

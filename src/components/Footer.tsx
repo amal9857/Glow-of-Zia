@@ -53,15 +53,12 @@ export default function Footer() {
                         <a href="https://www.facebook.com/profile.php?id=61575429970949" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
                             <FacebookIcon />
                         </a>
-                        <a href="https://www.instagram.com/glow_of_joe?igsh=MTV2dHdheGo2Y2xzdQ==" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
+                        <a href="https://www.instagram.com/glow_of_joe/" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
                             <InstagramIcon />
                         </a>
-                        <div className={styles.whatsappWrapper}>
-                            <a href="https://wa.me/919074185755" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="WhatsApp">
-                                <WhatsAppIcon />
-                            </a>
-                            <span className={styles.whatsappLabel}>Customer Support</span>
-                        </div>
+                        <a href="https://wa.me/919074185755" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="WhatsApp">
+                            <WhatsAppIcon />
+                        </a>
                     </div>
                 </div>
 
