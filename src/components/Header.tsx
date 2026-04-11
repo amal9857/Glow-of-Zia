@@ -55,7 +55,7 @@ export default function Header() {
                     </button>
 
                     <Link href="/" className={styles.logoContainer}>
-                        <img src="/logo.jpg" alt="Glow of Zia Logo" className={styles.logoImage} />
+                        <img src="/logo.png" alt="Glow of Zia Logo" className={styles.logoImage} />
                     </Link>
 
                     <button onClick={() => setSearchOpen(true)} className={styles.menuButton} aria-label="Search">
