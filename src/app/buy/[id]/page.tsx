@@ -109,7 +109,7 @@ export default function BuyPage() {
             `Please share the payment screenshot to proceed.\n\n` +
             `Note: Delivery charges may vary depending on your location and will be confirmed at the time of order.`;
 
-        const phone = process.env.NEXT_PUBLIC_OWNER_WHATSAPP || '919999999999';
+        const phone = process.env.NEXT_PUBLIC_OWNER_WHATSAPP || '919072311211';
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
     };
 
