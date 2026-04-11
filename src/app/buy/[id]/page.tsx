@@ -111,6 +111,34 @@ export default function BuyPage() {
 
         const phone = process.env.NEXT_PUBLIC_OWNER_WHATSAPP || '919072311211';
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+
+        // Save order to DB
+        fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                customerName: form.name,
+                email: form.email,
+                phone: form.phone,
+                address: form.address,
+                city: form.city,
+                state: form.state,
+                country: form.country,
+                pincode: form.pincode,
+                landmark: form.landmark,
+                productId: product.id,
+                productName: product.name,
+                productNumber: product.productNumber,
+                collection: product.collection,
+                category: product.category,
+                material: product.material,
+                weight: product.weight,
+                size: product.size,
+                quantity,
+                pricePerItem: product.price,
+                totalAmount: total,
+            }),
+        });
     };
 
     const field = (key: FormKey) => ({
